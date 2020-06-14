@@ -1,4 +1,4 @@
-# Example project repository
+# Flight Delays Prediction App
  
 <!-- toc -->
 
