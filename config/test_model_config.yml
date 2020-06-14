@@ -1,0 +1,80 @@
+data_path: ../data/Flights.csv
+data_filename: Flights.csv
+flight_db_path: sqlite:///../src/sql/FlightDelays.db
+path_to_cancel_model: ../models/cancel_model.sav
+path_to_delay_model: ../models/delay_model.sav
+test_split: .3
+
+make_predictions:
+  predictions_path: ../data/predictions.csv
+  model_variables: ['MONTH','DAY_OF_WEEK','OP_UNIQUE_CARRIER','ORIGIN_AIRPORT_ID','DEST_STATE_ABR']
+  
+
+import_data:
+  S3_retrieval_bucket: flightdelays9232
+
+upload_data:
+  S3_region_name: us-east-2
+
+
+query_RDS: 
+  round_preds_to: 4
+
+app: 
+  host: 127.0.0.1
+  port: 3000
+  airlines: {'United': 'UA', 'Alaska Airlines':'AS', 'Endeavor Air':'9E', 'JetBlue':'B6',  'ExpressJet':'EV',  'Frontier':'F9', 'Envoy':'MQ', 'Spirit':'NK', 'PSA Airlines':'OH',  'SkyWest':'OO', 'Virgin Airlines':'VX',
+       'Southwest':'WN', 'Republic Airlines':'YX', 'American Airlines':'AA', 'Delta':'DL'}
+  weekdays: {'Monday':'1', 'Tuesday':'2','Wednesday':'3', 'Thursday':'4','Friday':'5', 'Saturday':'6','Sunday':'7'}
+  months: {'January':'1', 'February':'2','March':'3', 'April':'4','May':'5', 'June':'6','July':'7','August':'8', 'September':'9','October':'10', 'November':'11','December':'12'}
+  states: { 'Alabama': 'AL',
+            'Alaska': 'AK',
+            'Arizona': 'AZ',
+            'Arkansas': 'AR',
+            'California': 'CA',
+            'Colorado': 'CO',
+            'Connecticut': 'CT',
+            'Delaware': 'DE',
+            'Florida': 'FL',
+            'Georgia': 'GA',
+            'Hawaii': 'HI',
+            'Idaho': 'ID',
+            'Illinois': 'IL',
+            'Indiana': 'IN',
+            'Iowa': 'IA',
+            'Kansas': 'KS',
+            'Kentucky': 'KY',
+            'Louisiana': 'LA',
+            'Maine': 'ME',
+            'Maryland': 'MD',
+            'Massachusetts': 'MA',
+            'Michigan': 'MI',
+            'Minnesota': 'MN',
+            'Mississippi': 'MS',
+            'Missouri': 'MO',
+            'Montana': 'MT',
+            'Nebraska': 'NE',
+            'Nevada': 'NV',
+            'New Hampshire': 'NH',
+            'New Jersey': 'NJ',
+            'New Mexico': 'NM',
+            'New York': 'NY',
+            'North Carolina': 'NC',
+            'North Dakota': 'ND',
+            'Ohio': 'OH',
+            'Oklahoma': 'OK',
+            'Oregon': 'OR',
+            'Pennsylvania': 'PA',
+            'Rhode Island': 'RI',
+            'South Carolina': 'SC',
+            'South Dakota': 'SD',
+            'Tennessee': 'TN',
+            'Texas': 'TX',
+            'Utah': 'UT',
+            'Vermont': 'VT',
+            'Virginia': 'VA',
+            'Washington': 'WA',
+            'West Virginia': 'WV',
+            'Wisconsin': 'WI',
+            'Wyoming': 'WY',
+        }

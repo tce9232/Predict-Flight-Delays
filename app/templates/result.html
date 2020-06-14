@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: left;
+  font-size: 12px;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+  font-size: 30px;
+}
+
+/* Left and right column */
+.column.side {
+  width: 50%;
+}
+
+/* Middle column */
+.column.middle {
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<h1>Flight Forecast</h1>
+
+
+<div class="header">
+  <h2><form action="{{ url_for('get_entry') }}" method=post>
+      <dl>
+            <a>Airport:</a>
+            <select name = "Airport">
+                    <option value="O'Hare">O'Hare</option>
+                    <option value="Midway">Midway</option>
+            </select>
+            <br>
+            <a>Weekday:	</a>
+            <select name = "Weekday">
+                    <option value="Sunday">Sunday</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+            </select>
+            <br>
+            <a>Month: </a>
+            <select name = "Month">
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+            </select>
+            <br>
+            <a>Airline: </a>
+            <select name = "Airline">
+                    <option value="United">United</option>
+                    <option value="Delta">Delta</option>
+                    <option value="American">American</option>
+                    <option value="Southwest">Southwest</option>
+                    <option value="JetBlue">JetBlue</option>
+                    <option value="Alaska">Alaska</option>
+                    <option value="Virgin">Virgin</option>
+                    <option value="Spirit">Spirit</option>
+                    <option value="Frontier">Frontier</option>
+                    <option value="Endeavor">Endeavor</option>
+                    <option value="ExpressJet">ExpressJet</option>
+                    <option value="Envoy">Envoy</option>
+                    <option value="PSA">PSA</option>
+                    <option value="SkyWest">SkyWest</option>
+                    <option value="Republic">Republic</option>
+            </select>
+            <br>
+            <a>Arriving State: </a>
+            <select name = "State">
+                    <option value="Alabama">Alabama</option>
+                    <option value="Alaska">Alaska</option>
+                    <option value="Arizona">Arizona</option>
+                    <option value="Arkansas">Arkansas</option>
+                    <option value="California">California</option>
+                    <option value="Colorado">Colorado</option>
+                    <option value="Connecticut">Connecticut</option>
+                    <option value="Delaware">Delaware</option>
+                    <option value="Florida">Florida</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Hawaii">Hawaii</option>
+                    <option value="Idaho">Idaho</option>
+                    <option value="Illinois">Illinois</option>
+                    <option value="Indiana">Indiana</option>
+                    <option value="Iowa">Iowa</option>
+                    <option value="Kansas">Kansas</option>
+                    <option value="Kentucky">Kentucky</option>
+                    <option value="Louisiana">Louisiana</option>
+                    <option value="Maine">Maine</option>
+                    <option value="Maryland">Maryland</option>
+                    <option value="Massachusetts">Massachusetts</option>
+                    <option value="Michigan">Michigan</option>
+                    <option value="Minnesota">Minnesota</option>
+                    <option value="Mississippi">Mississippi</option>
+                    <option value="Missouri">Missouri</option>
+                    <option value="Montana">Montana</option>
+                    <option value="Nebraska">Nebraska</option>
+                    <option value="Nevada">Nevada</option>
+                    <option value="New Hampshire">New Hampshire</option>
+                    <option value="New Jersey">New Jersey</option>
+                    <option value="New Mexico">New Mexico</option>
+                    <option value="New York">New York</option>
+                    <option value="North Carolina">North Carolina</option>
+                    <option value="North Dakota">North Dakota</option>
+                    <option value="Ohio">Ohio</option>
+                    <option value="Oklahoma">Oklahoma</option>
+                    <option value="Oregon">Oregon</option>
+                    <option value="Pennsylvania">Pennsylvania</option>
+                    <option value="Rhode Island">Rhode Island</option>
+                    <option value="South Carolina">South Carolina</option>
+                    <option value="South Dakota">South Dakota</option>
+                    <option value="Tennessee">Tennessee</option>
+                    <option value="Texas">Texas</option>
+                    <option value="Utah">Utah</option>
+                    <option value="Vermont">Vermont</option>
+                    <option value="Virginia">Virginia</option>
+                    <option value="Washington">Washington</option>
+                    <option value="West Virginia">West Virginia</option>
+                    <option value="Wisconsin">Wisconsin</option>
+                    <option value="Wyoming">Wyoming</option>
+            </select>
+            <br>
+        <input type='submit'>
+      </dl>
+    </form></h2>
+</div>
+
+<body>
+        <marquee behavior="scroll" direction="right">
+                <img src="../static/images/plane.png" width="120" height="80"  >
+        </marquee>
+</body>
+
+<div class="row">
+  <div class="column side" style="background-color:#aaa;">Chance of Cancellation: <br> {{cancellation}}% </div>
+  <div class="column middle" style="background-color:#bbb;">Predicted Delay: <br>  {{delay}} minutes </div>
+</div>
+
+</body>
+</html>
